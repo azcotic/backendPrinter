@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const FiscalPrinter = require('../models/FiscalPrinter');
+const FiscalPrinter = require('../models/fiscalPrinter');
 const configModel = require('../models/config');
 // Create a new fiscal printer
 router.post('/', auth, async (req, res) => {

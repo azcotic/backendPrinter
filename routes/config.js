@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const FiscalPrinter = require('../models/FiscalPrinter');
 const configModel = require('../models/config');
 
 //GET Return the version of the firmware /firmwareVersion
