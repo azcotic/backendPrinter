@@ -30,7 +30,13 @@ router.get('/', auth, async (req, res) => {
 // Get a specific fiscal printer
 router.get('/:id', auth, async (req, res) => {
   try {
-    const printer = await FiscalPrinter.findById(req.params.id);
+    let idPrinter = req.params.id;
+    let printer = {};
+    if (idPrinter.match(/^[0-9a-fA-F]{24}$/)) {
+      printer = await FiscalPrinter.findById(req.params.id);
+    }else{
+      printer = await FiscalPrinter.findOne({serialNumber:req.params.id})
+    }
     if (!printer) {
       return res.status(404).json({ message: 'Printer not found' });
     }
